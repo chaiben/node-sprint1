@@ -1,0 +1,1 @@
+((nom) => console.log(nom))("Marçal");
