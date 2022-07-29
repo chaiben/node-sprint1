@@ -72,18 +72,57 @@ const getEmployee = (id) =>
   new Promise((resolve, reject) => {
     // Search employees
     const employee = employees.find((employee) => employee.id === id);
-    const salary = salaries.find((salary) => salary.id === id);
-    employee && salary
-      ? resolve(`N2E1 response: ${employee.name} - ${salary.salary}`)
+    employee
+      ? resolve(employee)
       : reject(new Error("N2E1 response: ID not found"));
   });
 
 getEmployee(1)
-  .then((res) => console.log(res))
+  .then((res) => console.log("N2E1", res))
   .catch((err) => console.log(err.message));
 getEmployee(3)
-  .then((res) => console.log(res))
+  .then((res) => console.log("N2E1", res))
   .catch((err) => console.log(err.message));
 getEmployee(4)
-  .then((res) => console.log(res))
+  .then((res) => console.log("N2E1", res))
   .catch((err) => console.log(err.message));
+
+// Nivel 2 - Ejercicio 2
+const getSalary = (id) =>
+  new Promise((resolve, reject) => {
+    // Search employees
+    const salary = salaries.find((salary) => salary.id === id);
+    salary ? resolve(salary) : reject(new Error("N2E2 response: ID not found"));
+  });
+
+getSalary(1)
+  .then((res) => console.log("N2E2", res))
+  .catch((err) => console.log(err.message));
+getSalary(3)
+  .then((res) => console.log("N2E2", res))
+  .catch((err) => console.log(err.message));
+getSalary(4)
+  .then((res) => console.log("N2E2", res))
+  .catch((err) => console.log(err.message));
+
+// Nivel 2 - Ejercicio 3
+
+getEmployee(1)
+  .then((employee) =>
+    getSalary(employee.id).
+      then((salary) =>
+        console.log("N2E3", `${employee.name}: $ ${salary.salary}`)
+    )
+    .catch(err => console.log("N2E3", err.message))
+  )
+  .catch((err) => console.log("N2E3", err.message));
+
+  getEmployee(5)
+  .then((employee) =>
+    getSalary(employee.id).
+      then((salary) =>
+        console.log("N2E3", `${employee.name}: $ ${salary.salary}`)
+    )
+    .catch(err => console.log("N2E3", err.message))
+  )
+  .catch((err) => console.log("N2E3", err.message));
