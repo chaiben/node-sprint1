@@ -57,7 +57,7 @@ const obj4 = new CreatorObjectFunction("error");
 try {
   obj4.unaccessibleFunction("hola");
 } catch(e) {
-  console.log("Error message: ", e);
+  console.log("Error message: ", e.message);
 };
 obj4.showResult();
 
