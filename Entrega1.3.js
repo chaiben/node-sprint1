@@ -1,4 +1,7 @@
-console.log("Entrega 1.3");
+console.log("+-------------+");
+console.log("| Entrega 1.3 |");
+console.log("+-------------+");
+console.log("");
 //Nivel 1 - Ejercicio 1
 const promise = (isResolved) =>
   new Promise((resolve, reject) => {

@@ -1,5 +1,7 @@
-// Entrega 1.2
-console.log("Entrega 1.2");
+console.log("+-------------+");
+console.log("| Entrega 1.2 |");
+console.log("+-------------+");
+console.log("");
 //Nivel 1 - Ejercicio 1
 console.log("Nivel 1 - Ejercicio 1");
 console.log(((a, b) => a + b)(5, 8));
