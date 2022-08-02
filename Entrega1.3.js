@@ -41,7 +41,7 @@ crea una arrow function getEmployee()
 que retorni una Promise efectuant la cerca en 
 l'objecte pel seu id.
 */
-let employees = [
+const employees = [
   {
     id: 1,
     name: "Linux Torvalds",
@@ -56,7 +56,7 @@ let employees = [
   },
 ];
 
-let salaries = [
+const salaries = [
   {
     id: 1,
     salary: 4000,
@@ -70,6 +70,7 @@ let salaries = [
     salary: 2000,
   },
 ];
+module.exports.salaries = salaries;
 
 const getEmployee = (id) =>
   new Promise((resolve, reject) => {
@@ -79,6 +80,7 @@ const getEmployee = (id) =>
       ? resolve(employee)
       : reject(new Error("N2E1 response: ID not found"));
   });
+module.exports.getEmployee = getEmployee;
 
 getEmployee(1)
   .then((res) => console.log("N2E1", res))

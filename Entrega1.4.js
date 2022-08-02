@@ -4,44 +4,9 @@ console.log("+-------------+");
 console.log("");
 //Nivel 1 - Ejercicio 1
 
-let employees = [
-  {
-    id: 1,
-    name: "Linux Torvalds",
-  },
-  {
-    id: 2,
-    name: "Bill Gates",
-  },
-  {
-    id: 3,
-    name: "Jeff Bezos",
-  },
-];
-
-let salaries = [
-  {
-    id: 1,
-    salary: 4000,
-  },
-  {
-    id: 2,
-    salary: 1000,
-  },
-  {
-    id: 3,
-    salary: 2000,
-  },
-];
-
-const getEmployee = (id) =>
-  new Promise((resolve, reject) => {
-    // Search employees
-    const employee = employees.find((employee) => employee.id === id);
-    employee
-      ? resolve(employee)
-      : reject(new Error("N1E1: Employee ID not found"));
-  });
+// Import existing variables
+const {salaries} = require('./Entrega1.3');
+const {getEmployee} = require('./Entrega1.3');
 
 const getSalary = (id) =>
   new Promise((resolve, reject) => {
