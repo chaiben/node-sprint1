@@ -103,7 +103,6 @@ const file2HexAndBase64 = () => {
   // });
 };
 
-
 // B) Crea una funció que
 //  - guardi els fitxers del punt anterior encriptats amb l'algoritme aes-192-cbc,
 //  - i esborri els fitxers inicials.
@@ -111,8 +110,7 @@ const file2HexAndBase64 = () => {
 const ALGORITME = "aes-192-cbc";
 const PASSWORD = "Bon dia mundo! Buscar a Nemo";
 const crypto = require("crypto");
-//let iv = crypto.randomBytes(16); // Random initialization vector - this is not secret
-let iv = "1234567812345678"; // Random initialization vector - this is not secret
+let iv = crypto.randomBytes(16); // Random initialization vector - this is not secret
 
 const criptyData = (secret_message) => {
   let key = crypto.scryptSync(PASSWORD, "salt", 24);
@@ -130,10 +128,9 @@ const cryptFile = () => {
       fs.writeFile("FileHexCrypted.txt", criptyData(data), (err) => {
         if (err) throw err;
         else
-          console.log("uncomment here")
-          // fs.unlink("FileHex.txt", (err) => {
-          //   if (err) throw err;
-          // });
+          fs.unlink("FileHex.txt", (err) => {
+            if (err) throw err;
+          });
       });
     }
   });
@@ -143,16 +140,13 @@ const cryptFile = () => {
       fs.writeFile("File64Crypted.txt", criptyData(data), (err) => {
         if (err) throw err;
         else
-          console.log("uncomment here")
-          // fs.unlink("File64.txt", (err) => {
-          //   if (err) throw err;
-          // });
+          fs.unlink("File64.txt", (err) => {
+            if (err) throw err;
+          });
       });
     }
   });
 };
-
-
 
 // C) Crea una altra funció que:
 //  - desencripti i
@@ -169,22 +163,30 @@ const decriptyData = (encryeted) => {
 const descriptFile = () => {
   fs.readFile("FileHexCrypted.txt", "utf-8", (err, criptyData) => {
     let data = decriptyData(criptyData);
-    // let buff = Buffer.from(data);
-    fs.writeFile("FileHexNew.txt", data, (err) => {
+
+    fs.writeFile("FileHex.txt", data, (err) => {
       if (err) throw err;
     });
   });
   fs.readFile("File64Crypted.txt", "utf-8", (err, criptyData) => {
     let data = decriptyData(criptyData);
-    // let buff = Buffer.from(data);
-    fs.writeFile("File64New.txt", data, (err) => {
+
+    fs.writeFile("File64.txt", data, (err) => {
       if (err) throw err;
     });
   });
 };
 
 // Inclou un README amb instruccions per a l'execució de cada part.
-
-//file2HexAndBase64();
-//cryptFile();
-descriptFile();
+setTimeout(() => {
+  console.log("Creating original files...");
+  file2HexAndBase64();
+}, 1000);
+setTimeout(() => {
+  console.log("Starting to crypt files...");
+  cryptFile();
+}, 2000);
+setTimeout(() => {
+  console.log("Starting to decript files...");
+  descriptFile();
+}, 3000);
