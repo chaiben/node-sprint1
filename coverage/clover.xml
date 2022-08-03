@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1659524623124" clover="3.2.0">
-  <project timestamp="1659524623124" name="All files">
-    <metrics statements="85" coveredstatements="68" conditionals="32" coveredconditionals="28" methods="38" coveredmethods="25" elements="155" coveredelements="121" complexity="0" loc="85" ncloc="85" packages="1" files="2" classes="2"/>
+<coverage generated="1659542171939" clover="3.2.0">
+  <project timestamp="1659542171939" name="All files">
+    <metrics statements="85" coveredstatements="69" conditionals="32" coveredconditionals="29" methods="38" coveredmethods="25" elements="155" coveredelements="123" complexity="0" loc="85" ncloc="85" packages="1" files="2" classes="2"/>
     <file name="basic-operations.js" path="/Volumes/GoogleDrive/Mi unidad/IT Academy/Node JS/sprint 1/app/basic-operations.js">
       <metrics statements="20" coveredstatements="17" conditionals="16" coveredconditionals="13" methods="4" coveredmethods="4"/>
       <line num="1" count="1" type="stmt"/>
@@ -26,7 +26,7 @@
       <line num="29" count="1" type="stmt"/>
     </file>
     <file name="entrega1.3.js" path="/Volumes/GoogleDrive/Mi unidad/IT Academy/Node JS/sprint 1/app/entrega1.3.js">
-      <metrics statements="65" coveredstatements="51" conditionals="16" coveredconditionals="15" methods="34" coveredmethods="21"/>
+      <metrics statements="65" coveredstatements="52" conditionals="16" coveredconditionals="16" methods="34" coveredmethods="21"/>
       <line num="1" count="1" type="stmt"/>
       <line num="2" count="1" type="stmt"/>
       <line num="3" count="1" type="stmt"/>
@@ -46,8 +46,8 @@
       <line num="33" count="1" type="stmt"/>
       <line num="36" count="3" type="stmt"/>
       <line num="38" count="1" type="stmt"/>
-      <line num="39" count="2" type="cond" truecount="1" falsecount="1"/>
-      <line num="45" count="0" type="stmt"/>
+      <line num="39" count="3" type="cond" truecount="2" falsecount="0"/>
+      <line num="45" count="1" type="stmt"/>
       <line num="49" count="2" type="stmt"/>
       <line num="51" count="1" type="stmt"/>
       <line num="53" count="1" type="stmt"/>
