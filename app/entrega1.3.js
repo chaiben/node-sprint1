@@ -28,11 +28,30 @@ promise(false)
   });
 
 //Nivel 1 - Ejercicio 2
-const sayHello = (name) => console.log(`N1E2 response: Hello ${name}`);
+const sayHello = (name) => {
+  if (name === undefined || typeof name !== "string")
+    throw new Error(
+      'This function expects to receive a "name" string as parameter'
+    );
+  console.log(`N1E2 response: Hello ${name}`);
+};
 const talk = (name, callback) => {
+  if (
+    name === undefined ||
+    typeof name !== "string" ||
+    callback === undefined ||
+    typeof callback !== "function"
+  ) {
+    throw new Error(
+      'This function expects to receive a "name" string and a "callback" function as parameters'
+    );
+  }
   callback(name);
 };
 talk("Marçal", sayHello);
+
+module.exports.sayHello = sayHello;
+module.exports.talk = talk;
 
 //Nivel 2 - Ejercicio 1
 /* 
@@ -114,20 +133,20 @@ getSalary(4)
 
 getEmployee(1)
   .then((employee) =>
-    getSalary(employee.id).
-      then((salary) =>
+    getSalary(employee.id)
+      .then((salary) =>
         console.log("N2E3", `${employee.name}: $ ${salary.salary}`)
-    )
-    .catch(err => console.log("N2E3", err.message))
+      )
+      .catch((err) => console.log("N2E3", err.message))
   )
   .catch((err) => console.log("N2E3", err.message));
 
-  getEmployee(5)
+getEmployee(5)
   .then((employee) =>
-    getSalary(employee.id).
-      then((salary) =>
+    getSalary(employee.id)
+      .then((salary) =>
         console.log("N2E3", `${employee.name}: $ ${salary.salary}`)
-    )
-    .catch(err => console.log("N2E3", err.message))
+      )
+      .catch((err) => console.log("N2E3", err.message))
   )
   .catch((err) => console.log("N2E3", err.message));

@@ -1,0 +1,27 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "NodeJS course - sprint 1",
+  "main": "Entrega1.1.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chaiben/node-sprint1.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "javascript",
+    "tests"
+  ],
+  "author": "Marçal Chaiben",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chaiben/node-sprint1/issues"
+  },
+  "homepage": "https://github.com/chaiben/node-sprint1#readme",
+  "devDependencies": {
+    "jest": "^28.1.3"
+  }
+}
