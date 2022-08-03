@@ -14,15 +14,9 @@ promise(true)
   .then((res) => {
     console.log(res);
   })
-  .catch((err) => {
-    console.log(err.message);
-  });
 
 // Promise Rejected
 promise(false)
-  .then((res) => {
-    console.log(res);
-  })
   .catch((err) => {
     console.log(err.message);
   });
@@ -101,15 +95,9 @@ const getEmployee = (id) =>
   });
 module.exports.getEmployee = getEmployee;
 
-getEmployee(1)
-  .then((res) => console.log("N2E1", res))
-  .catch((err) => console.log(err.message));
-getEmployee(3)
-  .then((res) => console.log("N2E1", res))
-  .catch((err) => console.log(err.message));
-getEmployee(4)
-  .then((res) => console.log("N2E1", res))
-  .catch((err) => console.log(err.message));
+getEmployee(1).then((res) => console.log("N2E1", res));
+getEmployee(3).then((res) => console.log("N2E1", res));
+getEmployee(4).catch((err) => console.log(err.message));
 
 // Nivel 2 - Ejercicio 2
 const getSalary = (id) =>
@@ -119,17 +107,11 @@ const getSalary = (id) =>
     salary ? resolve(salary) : reject(new Error("N2E2 response: ID not found"));
   });
 
-  module.exports.getSalary = getSalary;
+module.exports.getSalary = getSalary;
 
-getSalary(1)
-  .then((res) => console.log("N2E2", res))
-  .catch((err) => console.log(err.message));
-getSalary(3)
-  .then((res) => console.log("N2E2", res))
-  .catch((err) => console.log(err.message));
-getSalary(4)
-  .then((res) => console.log("N2E2", res))
-  .catch((err) => console.log(err.message));
+getSalary(1).then((res) => console.log("N2E2", res));
+getSalary(3).then((res) => console.log("N2E2", res));
+getSalary(4).catch((err) => console.log(err.message));
 
 // Nivel 2 - Ejercicio 3
 
@@ -139,16 +121,6 @@ getEmployee(1)
       .then((salary) =>
         console.log("N2E3", `${employee.name}: $ ${salary.salary}`)
       )
-      .catch((err) => console.log("N2E3", err.message))
-  )
-  .catch((err) => console.log("N2E3", err.message));
+  );
 
-getEmployee(5)
-  .then((employee) =>
-    getSalary(employee.id)
-      .then((salary) =>
-        console.log("N2E3", `${employee.name}: $ ${salary.salary}`)
-      )
-      .catch((err) => console.log("N2E3", err.message))
-  )
-  .catch((err) => console.log("N2E3", err.message));
+getEmployee(5).catch((err) => console.log("N2E3", err.message));

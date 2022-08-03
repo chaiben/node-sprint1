@@ -1,4 +1,4 @@
-const { describe, expect, beforeAll } = require("@jest/globals");
+const { describe, expect } = require("@jest/globals");
 
 const { sayHello, getEmployee, getSalary } = require("../entrega1.3");
 const { talk } = require("../entrega1.3");
