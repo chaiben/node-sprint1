@@ -1,6 +1,6 @@
 const { describe, expect, beforeAll } = require("@jest/globals");
 
-const { sayHello, getEmployee } = require("../entrega1.3");
+const { sayHello, getEmployee, getSalary } = require("../entrega1.3");
 const { talk } = require("../entrega1.3");
 
 const logSpy = jest.spyOn(console, "log");
@@ -46,5 +46,26 @@ describe("getEmployee", () => {
 
   it("Invalid getEmployee call", () => {
     return expect(getEmployee()).rejects.toThrow("N2E1 response: ID not found");
+  });
+});
+
+describe("getSalary", () => {
+  it("Metodo 1: Get Salary by id 1", () => {
+    return getSalary(1).then((salary) =>
+      expect(salary).toEqual(  {
+        id: 1,
+        salary: 4000,
+      })
+    );
+  });
+  it("Metodo 2: getSalary by id 2", () => {
+    return expect(getSalary(2)).resolves.toEqual({
+      id: 2,
+      salary: 1000,
+    });
+  });
+
+  it("Invalid getSalary call", () => {
+    return expect(getSalary()).rejects.toThrow("N2E2 response: ID not found");
   });
 });

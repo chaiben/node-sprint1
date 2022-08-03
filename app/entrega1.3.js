@@ -119,6 +119,8 @@ const getSalary = (id) =>
     salary ? resolve(salary) : reject(new Error("N2E2 response: ID not found"));
   });
 
+  module.exports.getSalary = getSalary;
+
 getSalary(1)
   .then((res) => console.log("N2E2", res))
   .catch((err) => console.log(err.message));
