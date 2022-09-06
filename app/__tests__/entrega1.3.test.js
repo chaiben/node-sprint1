@@ -1,7 +1,6 @@
 const { describe, expect } = require("@jest/globals");
 
-const { sayHello, getEmployee, getSalary } = require("../entrega1.3");
-const { talk } = require("../entrega1.3");
+const { sayHello, getEmployee, getSalary, talk } = require("../Entrega1.3");
 
 const logSpy = jest.spyOn(console, "log");
 
