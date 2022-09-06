@@ -5,8 +5,8 @@ console.log("");
 //Nivel 1 - Ejercicio 1
 
 // Import existing variables
-const {salaries} = require('./Entrega1.3');
-const {getEmployee} = require('./Entrega1.3');
+const {salaries} = require('./entrega1.3');
+const {getEmployee} = require('./entrega1.3');
 
 const getSalary = (id) =>
   new Promise((resolve, reject) => {
