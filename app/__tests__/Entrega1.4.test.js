@@ -10,7 +10,7 @@ describe("callDelay", () => {
     expect(data).toBe('Resolved');
   });
 
-  it("Method 2: Check promise function", async () => {
+  it("Method 2: Check promise function", () => {
     callDelay().then(result =>{
       expect(result).toBe('Resolved');
     })
