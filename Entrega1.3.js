@@ -1,11 +1,25 @@
+console.log("+-------------+");
+console.log("| Entrega 1.3 |");
+console.log("+-------------+");
+console.log("");
 //Nivel 1 - Ejercicio 1
 const promise = (isResolved) =>
   new Promise((resolve, reject) => {
     if (isResolved) resolve("N1E1 response: The promise was Resolved");
     else reject(new Error("N1E1 response: The promise was Rejected"));
   });
-  
-module.exports.promise = promise;
+
+// Promise Resolved
+promise(true)
+  .then((res) => {
+    console.log(res);
+  })
+
+// Promise Rejected
+promise(false)
+  .catch((err) => {
+    console.log(err.message);
+  });
 
 //Nivel 1 - Ejercicio 2
 const sayHello = (name) => {
@@ -15,8 +29,6 @@ const sayHello = (name) => {
     );
   console.log(`N1E2 response: Hello ${name}`);
 };
-module.exports.sayHello = sayHello;
-
 const talk = (name, callback) => {
   if (
     name === undefined ||
@@ -30,6 +42,9 @@ const talk = (name, callback) => {
   }
   callback(name);
 };
+talk("Marçal", sayHello);
+
+module.exports.sayHello = sayHello;
 module.exports.talk = talk;
 
 //Nivel 2 - Ejercicio 1
@@ -53,7 +68,6 @@ const employees = [
     name: "Jeff Bezos",
   },
 ];
-module.exports.employees = employees;
 
 const salaries = [
   {
@@ -81,6 +95,10 @@ const getEmployee = (id) =>
   });
 module.exports.getEmployee = getEmployee;
 
+getEmployee(1).then((res) => console.log("N2E1", res));
+getEmployee(3).then((res) => console.log("N2E1", res));
+getEmployee(4).catch((err) => console.log(err.message));
+
 // Nivel 2 - Ejercicio 2
 const getSalary = (id) =>
   new Promise((resolve, reject) => {
@@ -90,3 +108,19 @@ const getSalary = (id) =>
   });
 
 module.exports.getSalary = getSalary;
+
+getSalary(1).then((res) => console.log("N2E2", res));
+getSalary(3).then((res) => console.log("N2E2", res));
+getSalary(4).catch((err) => console.log(err.message));
+
+// Nivel 2 - Ejercicio 3
+getEmployee(1)
+  .then((employee) =>
+    getSalary(employee.id)
+      .then((salary) =>
+        console.log("N2E3", `${employee.name}: $ ${salary.salary}`)
+      )
+  );
+
+// Nivel 3 - Ejercicio 1
+getEmployee(5).catch((err) => console.log("N2E3", err.message));
