@@ -1,8 +1,5 @@
 const { describe, expect } = require("@jest/globals");
-const { sum } = require("../basic-operations");
-const { subtract } = require("../basic-operations");
-const { multiply } = require("../basic-operations");
-const { divide } = require("../basic-operations");
+const { sum, subtract, multiply, divide } = require("../basic-operations");
 
 describe("Test sum operator", () => {
   it("Check the sum function", () => {
@@ -24,7 +21,9 @@ describe("Test subtract operator", () => {
     expect(subtract(10, 10)).not.toBe(1);
     expect(() => subtract(10)).toThrowError("This function expect 2 numbers");
     expect(() => subtract()).toThrowError("This function expect 2 numbers");
-    expect(() => subtract("a", "b")).toThrowError("This function expect 2 numbers");
+    expect(() => subtract("a", "b")).toThrowError(
+      "This function expect 2 numbers"
+    );
   });
 });
 
@@ -36,7 +35,9 @@ describe("Test multiply operator", () => {
     expect(multiply(10, 10)).not.toBe(1);
     expect(() => multiply(10)).toThrowError("This function expect 2 numbers");
     expect(() => multiply()).toThrowError("This function expect 2 numbers");
-    expect(() => multiply("a", "b")).toThrowError("This function expect 2 numbers");
+    expect(() => multiply("a", "b")).toThrowError(
+      "This function expect 2 numbers"
+    );
   });
 });
 
@@ -48,6 +49,8 @@ describe("Test divide operator", () => {
     expect(divide(10, 10)).not.toBe(10);
     expect(() => divide(10)).toThrowError("This function expect 2 numbers");
     expect(() => divide()).toThrowError("This function expect 2 numbers");
-    expect(() => divide("a", "b")).toThrowError("This function expect 2 numbers");
+    expect(() => divide("a", "b")).toThrowError(
+      "This function expect 2 numbers"
+    );
   });
 });

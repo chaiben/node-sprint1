@@ -45,72 +45,74 @@ callDelay();
 
 //Nivel 2 - Ejercicio 1
 const doubleNumberDelay = async (number) => {
-  if (/^\d+$/.test(number)) {
-    setTimeout(() => null, 2000);
-    return number * 2;
-  } else {
-    return Error("The function 'doubleNumberDelay' only accept numbers")
-  }
+  return new Promise((resolve, reject) => {
+    if (/^\d+$/.test(number)) {
+      setTimeout(() => resolve(number * 2), 2000);
+    } else {
+      reject(Error("The function 'doubleNumberDelay' only accept numbers"));
+    }
+  });
 };
 
 module.exports.doubleNumberDelay = doubleNumberDelay;
 
-const double3NumbersWithDelay = async (n1, n2, n3) => {
-  try{
-    const d1 = await doubleNumberDelay(n1);
+const sumTheDoubleOf3NumbersWithDelay = async (n1, n2, n3) => {
+  let d1, d2, d3;
+  try {
+    d1 = await doubleNumberDelay(n1);
   } catch (err) {
-    return Error(err)
+    return Error(err);
   }
   try {
-    const d2 = await doubleNumberDelay(n2);
+    d2 = await doubleNumberDelay(n2);
   } catch (err) {
-    return Error(err)
+    return Error(err);
   }
   try {
-    const d3 = await doubleNumberDelay(n3);
+    d3 = await doubleNumberDelay(n3);
   } catch (err) {
-    return Error(err)
+    return Error(err);
   }
   return d1 + d2 + d3;
 };
 
-double3NumbersWithDelay(1, 2, 3).then((result) =>
-  console.log("Result", result)
+sumTheDoubleOf3NumbersWithDelay(1, 2, 3).then((result) =>
+  console.log("Result sumTheDoubleOf3NumbersWithDelay: ", result)
 );
 
 //Nivel 3 - Ejercicio 1
 try {
-  double3NumbersWithDelay("4", "a", 5).then(result => {
-    console.log(result)
+  sumTheDoubleOf3NumbersWithDelay("4", "a", 5).then((result) => {
+    console.log(result);
   });
 } catch (err) {
-  console.log(err)
+  console.log(err);
 }
 try {
-  double3NumbersWithDelay("6", "b", "").then(result => {
-    console.log(result)
+  sumTheDoubleOf3NumbersWithDelay("6", "b", "").then((result) => {
+    console.log(result);
   });
 } catch (err) {
-  console.log(err)
+  console.log(err);
 }
 try {
-  double3NumbersWithDelay("2c").then(result => {
-    console.log(result)
+  sumTheDoubleOf3NumbersWithDelay("2c").then((result) => {
+    console.log(result);
   });
 } catch (err) {
-  console.log(err)
+  console.log(err);
 }
 try {
-  double3NumbersWithDelay(null, undefined, false).then(result => {
-    console.log(result)
+  sumTheDoubleOf3NumbersWithDelay(null, undefined, false).then((result) => {
+    console.log(result);
   });
 } catch (err) {
-  console.log(err)
+  console.log(err);
 }
 try {
-  double3NumbersWithDelay(0, 7, 8).then(result => {
-    console.log(result)
+  sumTheDoubleOf3NumbersWithDelay(0, 7, 8).then((result) => {
+    console.log("Result sumTheDoubleOf3NumbersWithDelay: ", result);
   });
 } catch (err) {
-  console.log(err)
+  console.log(err);
 }

@@ -29,6 +29,8 @@ const sayHello = (name) => {
     );
   console.log(`N1E2 response: Hello ${name}`);
 };
+module.exports.sayHello = sayHello;
+
 const talk = (name, callback) => {
   if (
     name === undefined ||
@@ -43,8 +45,6 @@ const talk = (name, callback) => {
   callback(name);
 };
 talk("Marçal", sayHello);
-
-module.exports.sayHello = sayHello;
 module.exports.talk = talk;
 
 //Nivel 2 - Ejercicio 1
@@ -68,6 +68,7 @@ const employees = [
     name: "Jeff Bezos",
   },
 ];
+module.exports.employees = employees;
 
 const salaries = [
   {

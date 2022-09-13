@@ -20,12 +20,13 @@ describe("callDelay", () => {
 });
 
 describe("doubleNumberDelay", () => {
-  // There are two different methods to test an asyncronous function
 
   it("Testing using Jest Fake Timers", async () => {
+    console.log(1)
     jest.useFakeTimers();
-    const doubleNumberDelay = await doubleNumberDelay(4);
+    const data = await doubleNumberDelay(4);
     jest.runAllTimers();
+    console.log(2)
     expect(data).toBe(8);
   });
 
