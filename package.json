@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/chaiben/node-sprint1#readme",
   "devDependencies": {
+    "eslint": "^8.23.1",
     "jest": "^28.1.3"
   }
 }
