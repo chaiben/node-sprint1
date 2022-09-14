@@ -4,7 +4,7 @@
   "description": "NodeJS course - sprint 1",
   "main": "Entrega1.1.js",
   "scripts": {
-    "test": "jest --coverage"
+    "test": "standard && jest --coverage"
   },
   "repository": {
     "type": "git",
