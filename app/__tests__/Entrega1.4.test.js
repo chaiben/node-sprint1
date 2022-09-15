@@ -2,10 +2,10 @@
 
 const { describe, expect } = require('@jest/globals')
 
-const { callDelay, doubleNumberDelay } = require('../Entrega1.4')
+const { callDelay } = require('../Entrega1.4')
 
-jest.useFakeTimers()
-jest.spyOn(global, 'setTimeout')
+// jest.useFakeTimers()
+// jest.spyOn(global, 'setTimeout')
 
 describe('callDelay', () => {
   // There are two different methods to test an asyncronous function
@@ -22,10 +22,10 @@ describe('callDelay', () => {
   })
 })
 
-describe('doubleNumberDelay', () => {
-  it('Testing using Jest Fake Timers', () => {
-    const data2 = doubleNumberDelay(4)
-    jest.runAllTimers()
-    expect(data2).toBe(8)
-  })
-})
+// describe('doubleNumberDelay', () => {
+//   it('Testing using Jest Fake Timers', () => {
+//     const data2 = doubleNumberDelay(4)
+//     jest.runAllTimers()
+//     expect(data2).toBe(8)
+//   })
+// })
