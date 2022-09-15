@@ -34,32 +34,37 @@ persona.dirNom()
 // Nivel 3 - Ejercicio 1
 console.log('Nivel 3 - Ejercicio 1')
 
-function CreatorObjectFunction (value) {
-  // Accesible variable
-  this.value = value
+class Vehiculo {
+  constructor () {
+    if (this.constructor === Vehiculo) {
+      throw new Error('Abstract class cannot be instantiated')
+    }
+  }
 
-  // No accesible function
-  const unaccessibleFunction = (a) => `Value is "${a}"`
+  ruedas () {
+    throw new Error('This method must be implemented')
+  }
 
-  // Accesible function
-  this.showResult = () => {
-    console.log(unaccessibleFunction(this.value))
+  bocina () {
+    console.log('biiii')
   }
 }
-// String
-const obj1 = new CreatorObjectFunction('Marçal')
-obj1.showResult()
-// Number value
-const obj2 = new CreatorObjectFunction(30)
-obj2.showResult()
-// Empty value
-const obj3 = new CreatorObjectFunction()
-obj3.showResult()
-// Try to access unaccessible function
-const obj4 = new CreatorObjectFunction('error')
-try {
-  obj4.unaccessibleFunction('hola')
-} catch (e) {
-  console.log('Error message: ', e.message)
+
+class Moto extends Vehiculo {
+  ruedas () {
+    console.log(2)
+  }
 }
-obj4.showResult()
+
+class Coche extends Vehiculo {
+  ruedas () {
+    console.log(4)
+  }
+}
+
+const moto = new Moto()
+const coche = new Coche()
+moto.bocina()
+moto.ruedas()
+coche.bocina()
+coche.ruedas()
