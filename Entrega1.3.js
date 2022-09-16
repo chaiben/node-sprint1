@@ -22,31 +22,19 @@ promise(false)
   })
 
 // Nivel 1 - Ejercicio 2
-const sayHello = (name) => {
-  if (name === undefined || typeof name !== 'string') {
-    throw new Error(
-      'This function expects to receive a "name" string as parameter'
-    )
-  }
-  console.log(`N1E2 response: Hello ${name}`)
-}
-module.exports.sayHello = sayHello
 
-const talk = (name, callback) => {
-  if (
-    name === undefined ||
-    typeof name !== 'string' ||
-    callback === undefined ||
-    typeof callback !== 'function'
-  ) {
-    throw new Error(
-      'This function expects to receive a "name" string and a "callback" function as parameters'
-    )
-  }
-  callback(name)
+// This is the higher-order-function
+const createIntro = (name, callback) => {
+  const intro = `N1E2: My name is ${name}. Nice to meet you!`
+  callback(intro)
 }
-talk('Marçal', sayHello)
-module.exports.talk = talk
+
+// This is used as our callback function
+const logIntro = (name) => {
+  console.log(name)
+}
+
+createIntro('Marçal', logIntro)
 
 // Nivel 2 - Ejercicio 1
 /*
@@ -102,23 +90,24 @@ getEmployee(3).then((res) => console.log('N2E1', res))
 getEmployee(4).catch((err) => console.log(err.message))
 
 // Nivel 2 - Ejercicio 2
-const getSalary = (id) =>
+const getSalary = (employee) =>
   new Promise((resolve, reject) => {
     // Search employees
-    const salary = salaries.find((salary) => salary.id === id)
+    const salary = salaries.find((salary) => salary.id === employee.id)
     salary ? resolve(salary) : reject(new Error('N2E2 response: ID not found'))
   })
 
 module.exports.getSalary = getSalary
 
-getSalary(1).then((res) => console.log('N2E2', res))
-getSalary(3).then((res) => console.log('N2E2', res))
-getSalary(4).catch((err) => console.log(err.message))
+getEmployee(1).then(emloyee => getSalary(emloyee).then((res) => console.log('N2E2', res)))
+getEmployee(2).then(emloyee => getSalary(emloyee).then((res) => console.log('N2E2', res)))
+getEmployee(3).then(emloyee => getSalary(emloyee).then((res) => console.log('N2E2', res)))
+getEmployee(4).then(emloyee => getSalary(emloyee).then((res) => console.log('N2E2', res))).catch(err => console.log(err.message))
 
 // Nivel 2 - Ejercicio 3
 getEmployee(1)
   .then((employee) =>
-    getSalary(employee.id)
+    getSalary(employee)
       .then((salary) =>
         console.log('N2E3', `${employee.name}: $ ${salary.salary}`)
       )
