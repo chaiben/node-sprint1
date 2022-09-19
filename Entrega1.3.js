@@ -5,8 +5,8 @@ console.log('')
 // Nivel 1 - Ejercicio 1
 const promise = (isResolved) =>
   new Promise((resolve, reject) => {
-    if (isResolved) resolve('N1E1 response: The promise was Resolved')
-    else reject(new Error('N1E1 response: The promise was Rejected'))
+    if (isResolved) resolve('Entrega 3 N1E1 response: The promise was Resolved')
+    else reject(new Error('Entrega 3 N1E1 response: The promise was Rejected'))
   })
 
 // Promise Resolved
@@ -25,7 +25,7 @@ promise(false)
 
 // This is the higher-order-function
 const createIntro = (name, callback) => {
-  const intro = `N1E2: My name is ${name}. Nice to meet you!`
+  const intro = `Entrega 3 N1E2: My name is ${name}. Nice to meet you!`
   callback(intro)
 }
 
@@ -81,12 +81,12 @@ const getEmployee = (id) =>
     const employee = employees.find((employee) => employee.id === id)
     employee
       ? resolve(employee)
-      : reject(new Error('N2E1 response: ID not found'))
+      : reject(new Error('Entrega 3 N2E1 response: ID not found'))
   })
 module.exports.getEmployee = getEmployee
 
-getEmployee(1).then((res) => console.log('N2E1', res))
-getEmployee(3).then((res) => console.log('N2E1', res))
+getEmployee(1).then((res) => console.log('Entrega 3 N2E1', res))
+getEmployee(3).then((res) => console.log('Entrega 3 N2E1', res))
 getEmployee(4).catch((err) => console.log(err.message))
 
 // Nivel 2 - Ejercicio 2
@@ -94,24 +94,24 @@ const getSalary = (employee) =>
   new Promise((resolve, reject) => {
     // Search employees
     const salary = salaries.find((salary) => salary.id === employee.id)
-    salary ? resolve(salary) : reject(new Error('N2E2 response: ID not found'))
+    salary ? resolve(salary) : reject(new Error('Entrega 3 N2E2 response: ID not found'))
   })
 
 module.exports.getSalary = getSalary
 
-getEmployee(1).then(emloyee => getSalary(emloyee).then((res) => console.log('N2E2', res)))
-getEmployee(2).then(emloyee => getSalary(emloyee).then((res) => console.log('N2E2', res)))
-getEmployee(3).then(emloyee => getSalary(emloyee).then((res) => console.log('N2E2', res)))
-getEmployee(4).then(emloyee => getSalary(emloyee).then((res) => console.log('N2E2', res))).catch(err => console.log(err.message))
+getEmployee(1).then(emloyee => getSalary(emloyee).then((res) => console.log('Entrega 3 N2E2', res)))
+getEmployee(2).then(emloyee => getSalary(emloyee).then((res) => console.log('Entrega 3 N2E2', res)))
+getEmployee(3).then(emloyee => getSalary(emloyee).then((res) => console.log('Entrega 3 N2E2', res)))
+getEmployee(4).then(emloyee => getSalary(emloyee).then((res) => console.log('Entrega 3 N2E2', res))).catch(err => console.log(err.message))
 
 // Nivel 2 - Ejercicio 3
 getEmployee(1)
   .then((employee) =>
     getSalary(employee)
       .then((salary) =>
-        console.log('N2E3', `${employee.name}: $ ${salary.salary}`)
+        console.log('Entrega 3 N2E3', `${employee.name}: $ ${salary.salary}`)
       )
   )
 
 // Nivel 3 - Ejercicio 1
-getEmployee(5).catch((err) => console.log('N2E3', err.message))
+getEmployee(5).catch((err) => console.log('Entrega 3 N2E3', err.message))
