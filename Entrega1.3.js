@@ -55,6 +55,13 @@ const employees = [
   {
     id: 3,
     name: 'Jeff Bezos'
+  },
+  {
+    id: 5
+  },
+  {
+    id: 6,
+    name: ''
   }
 ]
 module.exports.employees = employees
@@ -71,17 +78,27 @@ const salaries = [
   {
     id: 3,
     salary: 2000
+  },
+  {
+    id: 5,
+    salary: 0
+  },
+  {
+    id: 6
   }
 ]
 module.exports.salaries = salaries
 
 const getEmployee = (id) =>
   new Promise((resolve, reject) => {
+    if (id === undefined) {
+      reject(new Error('Entrega 3 N2E1 getEmployee expects an "id"'))
+    }
     // Search employees
     const employee = employees.find((employee) => employee.id === id)
     employee
       ? resolve(employee)
-      : reject(new Error('Entrega 3 N2E1 response: ID not found'))
+      : reject(new Error(`Entrega 3 N2E1 response: id = ${id} not found`))
   })
 module.exports.getEmployee = getEmployee
 

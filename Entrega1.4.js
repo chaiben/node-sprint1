@@ -8,17 +8,24 @@ console.log('')
 const { getEmployee, getSalary } = require('./Entrega1.3')
 
 const getEmployeeInfo = (id) => {
-  getEmployee(id).then((employee) =>
-    getSalary(employee).then((salary) =>
-      console.log(`Entrega 4 N1E1: ${employee.name}: $${salary.salary}`)
+  getEmployee(id)
+    .then((employee) =>
+      getSalary(employee).then((salary) => {
+        if (!employee.name) {
+          employee.name = 'DESCONOCIDO'
+        }
+        if (salary.salary === undefined) {
+          salary.salary = 0
+        }
+        console.log(`Entrega 4 N1E1 - Employee id = ${employee.id}: ${employee.name}: $${salary.salary}`)
+      })
     )
-  ).catch(err => console.log('Entrega 4 N1E1', err.message))
+    .catch((err) => console.log('Entrega 4 N1E1', err.message))
 }
 
 getEmployeeInfo(1)
 getEmployeeInfo(2)
 getEmployeeInfo(3)
-getEmployeeInfo(4)
 
 // Nivel 1 - Ejercicio 2
 const resolveAfterDelay = () =>
@@ -36,6 +43,9 @@ callDelay()
 
 // Nivel 2 - Ejercicio 1
 const doubleNumberDelay = async (number) => {
+  if (number === undefined) {
+    number = 0
+  }
   return new Promise((resolve, reject) => {
     if (/^\d+$/.test(number)) {
       setTimeout(() => resolve(number * 2), 2000)
@@ -48,6 +58,9 @@ const doubleNumberDelay = async (number) => {
 module.exports.doubleNumberDelay = doubleNumberDelay
 
 const sumTheDoubleOf3NumbersWithDelay = async (n1, n2, n3) => {
+  if (n1 === undefined || n2 === undefined || n3 === undefined) {
+    throw Error('Error sumTheDoubleOf3NumbersWithDelay expects 3 arguments')
+  }
   let d1, d2, d3
   try {
     d1 = await doubleNumberDelay(n1)
@@ -55,52 +68,38 @@ const sumTheDoubleOf3NumbersWithDelay = async (n1, n2, n3) => {
     d3 = await doubleNumberDelay(n3)
     return d1 + d2 + d3
   } catch (err) {
-    console.log(err.message)
+    throw Error('Error sumTheDoubleOf3NumbersWithDelay: ' + err.message)
   }
 }
 
-sumTheDoubleOf3NumbersWithDelay(1, 2, 3).then((result) =>
-  console.log('Result sumTheDoubleOf3NumbersWithDelay: ', result)
-)
+sumTheDoubleOf3NumbersWithDelay(1, 2, 3)
+  .then((result) =>
+    console.log('Result sumTheDoubleOf3NumbersWithDelay: ', result)
+  )
+  .catch((err) => console.log(err.message))
 
-// Nivel 3 - Ejercicio 1
-sumTheDoubleOf3NumbersWithDelay('4', 'a', 5).then((result) => { console.log(result) })
-// try {
-//   sumTheDoubleOf3NumbersWithDelay('4', 'a', 5).then((result) => {
-//     console.log(result)
-//   })
-// } catch (err) {
-//   console.log(err.message)
-// }
+sumTheDoubleOf3NumbersWithDelay(0, '0', 1)
+  .then((result) =>
+    console.log('Result sumTheDoubleOf3NumbersWithDelay: ', result)
+  )
+  .catch((err) => console.log(err.message))
 
-// try {
-//   sumTheDoubleOf3NumbersWithDelay('6', 'b', '').then((result) => {
-//     console.log(result)
-//   })
-// } catch (err) {
-//   console.log(err.message)
-// }
+// Nivel 3 - Ejercicio 1 - Força i captura tants errors com puguis dels nivells 1 i 2.
+// Nivel 1
+getEmployeeInfo(4)
+getEmployeeInfo(5)
+getEmployeeInfo(6)
+getEmployeeInfo()
 
-// try {
-//   sumTheDoubleOf3NumbersWithDelay('2c').then((result) => {
-//     console.log(result)
-//   })
-// } catch (err) {
-//   console.log(err.message)
-// }
-
-// try {
-//   sumTheDoubleOf3NumbersWithDelay(null, undefined, false).then((result) => {
-//     console.log(result)
-//   })
-// } catch (err) {
-//   console.log(err.message)
-// }
-
-// try {
-//   sumTheDoubleOf3NumbersWithDelay(0, 7, 8).then((result) => {
-//     console.log('Result sumTheDoubleOf3NumbersWithDelay: ', result)
-//   })
-// } catch (err) {
-//   console.log(err.message)
-// }
+// Nivel 2
+// Checking Errors for sumTheDoubleOf3NumbersWithDelay
+sumTheDoubleOf3NumbersWithDelay(1, 2, 'a')
+  .then((result) =>
+    console.log('Result sumTheDoubleOf3NumbersWithDelay: ', result)
+  )
+  .catch((err) => console.log(err.message))
+sumTheDoubleOf3NumbersWithDelay(1, 2)
+  .then((result) =>
+    console.log('Result sumTheDoubleOf3NumbersWithDelay: ', result)
+  )
+  .catch((err) => console.log(err.message))
